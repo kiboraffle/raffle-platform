@@ -1,48 +1,20 @@
 {
   "version": 2,
-  "name": "raffle-platform",
   "builds": [
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/client/$1"
+      "dest": "/server.js"
     }
   ],
-  "env": {
-    "NODE_ENV": "production",
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-    "JWT_SECRET": "@jwt_secret",
-    "WHATSAPP_API_URL": "@whatsapp_api_url",
-    "WHATSAPP_API_TOKEN": "@whatsapp_api_token",
-    "WHATSAPP_PHONE_NUMBER_ID": "@whatsapp_phone_number_id",
-    "WHATSAPP_VERIFY_TOKEN": "@whatsapp_verify_token",
-    "MIDTRANS_SERVER_KEY": "@midtrans_server_key",
-    "MIDTRANS_CLIENT_KEY": "@midtrans_client_key",
-    "MIDTRANS_IS_PRODUCTION": "false",
-    "FRONTEND_URL": "https://raffle-platform.vercel.app"
-  },
   "functions": {
     "server.js": {
       "maxDuration": 30
     }
-  },
-  "regions": ["sin1"]
+  }
 }
